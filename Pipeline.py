@@ -79,7 +79,7 @@ cat_preprocessing = make_pipeline( SimpleImputer(missing_values=np.nan, strategy
 
 num_preprocessing = make_pipeline( SimpleImputer(missing_values=np.nan, strategy='median'))
 pipe_preprosseging = ColumnTransformer( [("numeric_transf", num_preprocessing, make_column_selector(dtype_exclude=object)),    # NOME-PROCESSSO  $$$$$ TRANFORMACAO A SER APLCIADA $$$$$ COLUNAS QUE VAO SOFRER A TRANF.
-                                        ("categorical_transf", cat_preprocessing, make_column_selector(dtype_include=object))])
+                                        ("categorical_transf", cat_preprocessing, make_column_selector(dtype_inclu  de=object))])
 
 
 #### MODELS
