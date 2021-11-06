@@ -1,17 +1,23 @@
-# Kaggle_Titanic
+# Titanic survival prediction
 
-Overview
-The data has been split into two groups:
+This repo contains code to a ML model that predicts survivability (classification task) at the Tatinic sinking tragedy based on data from passengers such as Age, Gender (Sex), how much paid for the ticked etc.
 
-* training set (train.csv)
-* test set (test.csv)
+The dataset consists of heterogeneous data types and each type requires specific preprocessing/tratement. The final estimator is a voting classifier with Logistic Regression, Random Forest and Gradient Boosting Classifier.
 
+This model scores top 3% at the ["Titanic - Machine Learning from Disaster" Kaggle competition](https://www.kaggle.com/c/titanic).
 
-The training set should be used to build your machine learning models. For the training set, we provide the outcome (also known as the “ground truth”) for each passenger. Your model will be based on “features” like passengers’ gender and class. You can also use feature engineering to create new features.
+## Summary
 
-The test set should be used to see how well your model performs on unseen data. For the test set, we do not provide the ground truth for each passenger. It is your job to predict these outcomes. For each passenger in the test set, use the model you trained to predict whether or not they survived the sinking of the Titanic.
+### Research Enviroment (Notebooks)
+- [EDA - Exploratory Data Analysis](https://github.com/marcos-mansur/Kaggle_Titanic/blob/main/EDA.ipynb) - Data analysis to better comprehend the features correlations, distribuitions and general behaviour.
+- [Feature Engineering](https://github.com/marcos-mansur/Kaggle_Titanic/blob/main/feature_engineering.ipynb) - Feature engineering functions and initial analysis of each transformation's impact over accuracy.
+- [Model Pipeline](https://github.com/marcos-mansur/Kaggle_Titanic/blob/main/best_model.ipynb) -  Notebook with code to the TOP 3% model pipeline, validation scores and learning curve.
 
-We also include gender_submission.csv, a set of predictions that assume all and only female passengers survive, as an example of what a submission file should look like.
+### Production Enviroment (.py files)
+- [Pipeline](https://github.com/marcos-mansur/Kaggle_Titanic/blob/main/Pipeline.py) - Pipelines workflow 
+- [train](https://github.com/marcos-mansur/Kaggle_Titanic/blob/main/train.py) - code to train the model, make a prediction, save the prediction to HD and activate GitHub Actions, showing train and validation scores of diferent pipelines at pull request (CI).
+- [Continuous Integration .yaml file](https://github.com/marcos-mansur/Kaggle_Titanic/blob/main/.github/workflows/cml.yaml) - .yaml file responsible for activating GitHub Actions with "push" as trigger.
 
-
-Developers: Thiago Ouverney, Marcos Mansur
+### Developers:
+- Marcos Mansur
+- Thiago Ouverney 
