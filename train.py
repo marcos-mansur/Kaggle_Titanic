@@ -1,9 +1,7 @@
 import pandas as pd
-from sklearn.pipeline import Pipeline
-from sklearn.preprocessing import FunctionTransformer
 from sklearn.model_selection import train_test_split,  cross_val_score, KFold, GridSearchCV
-from sklearn.linear_model import LogisticRegression
-from sklearn.ensemble import RandomForestClassifier
+from Pipeline import pipe_VotingClassifier1, final_pipe
+
 import warnings
 warnings.filterwarnings("ignore")
 
@@ -38,8 +36,6 @@ df = pd.read_csv("Dados/train.csv",index_col=0)
 x = df.drop("Survived",axis=1).copy()
 y = df.Survived
 seed = 42
-
-
 
 
 #Salvando Scores
@@ -87,18 +83,9 @@ def saving_predict(X,y,folds,seed,pipe,nome_modelo,grid_params = "",verbose = 1)
 # Teste
 x_test = pd.read_csv("Dados/test.csv",index_col = 0)
 
-
 # Saving my predictions
-pipe_1 = saving_predict(x,y,folds= 5, seed = seed, pipe = Pipeline.pipe_VotingClassifier_Soft, nome_modelo= "Soft Voting Classifier (1: LR, 2: RF, 3: GB)") # OUR BEST ENTRY
-pipe_2 = saving_predict(x,y,folds= 5, seed = seed, pipe = Pipeline.pipe_VotingClassifier_Hard, nome_modelo= "Hard Voting Classifier (LR, RF, GB)")
-pipe_3 = saving_predict(x,y,folds= 5, seed = seed, pipe = Pipeline.pipe_GB, nome_modelo= "Gradient Boosting Baseline")
-pipe_4 = saving_predict(x,y,folds= 5, seed = seed, pipe = Pipeline.pipe_XGBoost,  nome_modelo= "XGBoost Cross Baseline")
-pipe_5 = saving_predict(x,y,folds= 5, seed = seed, pipe = Pipeline.pipe_VotingClassifier_Hard_2, nome_modelo= "Hard Voting Classifier (LR, RF, GB) V2")
-
-#pipe_4 = saving_predict(x,y,folds= 5, seed = seed, pipe = Pipeline.pipe_XGBoost, grid_params= XGBoost_params, nome_modelo= "XGBoost Teste Pipeline", verbose = 3)
-
-
-#pipe_3 = saving_predict(x,y,folds= 5, seed = seed, pipe = Pipeline.pipe_RF, grid_params= RF_best_params, nome_modelo = "Random Forest Best Params")
+pipe_1 = saving_predict(x,y,folds= 5, seed = seed, pipe = vt_final_sklearn, nome_modelo= "VotingClass - sklearn")
+pipe_2 = saving_predict(x,y,folds= 5, seed = seed, pipe = vt_final_fe, nome_modelo= "VotingClass - feature_engine")
 
 #Saving Final Dataframe
 df_modelos = pd.DataFrame(modelos_testados)
@@ -112,7 +99,8 @@ def saving_prediction(pipe,x,local = "Predições/Predict5.csv"):
     predict_submission = pd.DataFrame({"PassengerId":x_test.index,"Survived":predict_array})
     predict_submission.to_csv(local,index=False)
 
-saving_prediction(pipe_5,x_test)
+saving_prediction(pipe_1,x_test)
+saving_prediction(pipe_2,x_test)
 
 
 
