@@ -1,0 +1,5 @@
+pandas==1.3.4
+numpy
+sklearn
+feature_engine
+tabulate==0.8.7

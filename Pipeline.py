@@ -1,4 +1,5 @@
 import numpy as np
+import pandas as pd
 import warnings
 
 from sklearn.pipeline import Pipeline, make_pipeline
@@ -7,7 +8,9 @@ from sklearn.compose import ColumnTransformer,make_column_selector
 from sklearn.impute import SimpleImputer
 from sklearn.ensemble import RandomForestClassifier, GradientBoostingClassifier, VotingClassifier
 from sklearn.linear_model import LogisticRegression
-from feature_engine.imputation import MeanMedianImputer
+from feature_engine.imputation import MeanMedianImputer, CategoricalImputer
+from feature_engine.encoding import OneHotEncoder as OneHotEncoderFE
+from feature_engine.selection import DropFeatures
 from Feature_engineering import FeatureEngPipe, dtype_fix, get_feature_name, Cabin_code
 
 #VARIABLES

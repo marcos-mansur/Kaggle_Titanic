@@ -1,11 +1,12 @@
+
 import pandas as pd
 from sklearn.model_selection import train_test_split,  cross_val_score, KFold, GridSearchCV
-from Pipeline import pipe_VotingClassifier1, final_pipe
+
+from Pipeline import vt_final_sklearn, vt_final_fe
 
 import warnings
 warnings.filterwarnings("ignore")
 
-import Pipeline
 
 ################# PARAMETROS #################
 RF_params = {
@@ -99,8 +100,8 @@ def saving_prediction(pipe,x,local = "Predições/Predict5.csv"):
     predict_submission = pd.DataFrame({"PassengerId":x_test.index,"Survived":predict_array})
     predict_submission.to_csv(local,index=False)
 
-saving_prediction(pipe_1,x_test)
-saving_prediction(pipe_2,x_test)
+saving_prediction(pipe_1,x_test, local = "Predições/Predict5.csv" )
+saving_prediction(pipe_2,x_test, local = "Predições/Predict6.csv")
 
 
 
