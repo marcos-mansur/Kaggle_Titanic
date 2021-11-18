@@ -2,7 +2,7 @@
 import pandas as pd 
 import numpy as np
 import matplotlib.pyplot as plt
-
+import streamlit as st
 # Learning curve
 from sklearn.model_selection import learning_curve
 
@@ -11,6 +11,14 @@ from sklearn.model_selection import train_test_split, cross_val_score
 
 #============ Utility functions ===================
 
+@st.cache
+def load_data():
+    global df, x, y,seed
+    df = pd.read_csv("Dados/train.csv",index_col=0)
+    x = df.drop("Survived",axis=1).copy()
+    y = df.Survived
+    seed = 42
+    return df,x,y,seed
 
 
 def plot_learning_curve(estimator, title, X, y, axes=None, ylim=None, cv=None,

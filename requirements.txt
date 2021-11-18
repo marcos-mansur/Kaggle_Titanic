@@ -3,3 +3,4 @@ numpy
 sklearn
 feature_engine
 tabulate==0.8.7
+streamlit
