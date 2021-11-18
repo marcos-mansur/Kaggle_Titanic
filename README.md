@@ -17,6 +17,7 @@ This model scores top 3% at the ["Titanic - Machine Learning from Disaster" Kagg
 - [Pipeline](https://github.com/marcos-mansur/Kaggle_Titanic/blob/main/Pipeline.py) - Pipelines workflow 
 - [train](https://github.com/marcos-mansur/Kaggle_Titanic/blob/main/train.py) - code to train the model, make a prediction, save the prediction to HD and activate GitHub Actions, showing train and validation scores of diferent pipelines at pull request (CI).
 - [Continuous Integration .yaml file](https://github.com/marcos-mansur/Kaggle_Titanic/blob/main/.github/workflows/cml.yaml) - .yaml file responsible for activating GitHub Actions with "push" as trigger.
+- [Streamlit Web App Deploy (WIP)](https://github.com/marcos-mansur/Kaggle_Titanic/blob/main/MyApp.py) - first draft of the web app using streamlit to deploy the model 
 
 ### Developers:
 - Marcos Mansur
